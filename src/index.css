@@ -1,3 +1,29 @@
 html, body{
   height: 100%;
 }
+
+body{
+  font-family: 'Roboto Slab', serif;
+  margin: 0;
+  padding: 0;
+  color: #F4FAFF;
+  background-color: #9F84BD;
+}
+
+button{
+  background: #EBC3DB;
+  color: #F4FAFF;
+  padding:0 45px;
+  border-radius: 15px;
+  border: 1px solid ;
+ font-size: 1.2em;
+ font-weight: bold;
+ cursor: pointer;
+  height: 30px;
+  transition: .3s;
+}
+
+button:hover{
+  opacity: 70%;
+  color: black
+}
