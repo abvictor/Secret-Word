@@ -1,31 +1,35 @@
 html, body{
-  height: 100%;
+  height: 90%;
 }
 
 body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   font-family: 'Roboto Slab', serif;
-  margin: 0;
+
   padding: 0;
-  color: #456990;
-  background-color: #E4FDE1;
+  color: #0F0A0A;
+  background-color: #2292A4;
 }
 
 button{
-  background: #028090;
-  color: #F4FAFF;
+  background: #F5EFED;
+  color: #0F0A0A;
   padding:0 45px;
   border-radius: 15px;
-  border: 1px solid ;
- font-size: 1.2em;
- font-weight: bold;
- cursor: pointer;
-  height: 30px;
+  border: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  height: 50px;
+  width: 100%;
   transition: .3s;
 }
 
 button:hover{
-  opacity: 60%;
-  color: white;
-  height: 45px;
+  opacity: 60%;  
+  color: black;
   
 }
