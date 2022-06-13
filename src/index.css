@@ -6,12 +6,12 @@ body{
   font-family: 'Roboto Slab', serif;
   margin: 0;
   padding: 0;
-  color: #F4FAFF;
-  background-color: #9F84BD;
+  color: #456990;
+  background-color: #E4FDE1;
 }
 
 button{
-  background: #EBC3DB;
+  background: #028090;
   color: #F4FAFF;
   padding:0 45px;
   border-radius: 15px;
@@ -24,6 +24,8 @@ button{
 }
 
 button:hover{
-  opacity: 70%;
-  color: black
+  opacity: 60%;
+  color: white;
+  height: 45px;
+  
 }

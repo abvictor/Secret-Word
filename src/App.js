@@ -20,8 +20,15 @@ function App() {
   const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState([]);
 
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [wrongLetters, setWrongLetters] = useState([]);
+  const [guesses, setGuesses] = useState(3);
+  const [score, setScore] = useState(0);
+
+  const guessesNum = 3;
+
   //pega uma categoria aleatória
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     const categories = Object.keys(words);
     const category =
       categories[Math.floor(Math.random() * Object.keys(categories).length)];
@@ -31,12 +38,15 @@ function App() {
       words[category][Math.floor(Math.random() * words[category].length)];
 
     return { word, category };
-  };
+  }, [words]);
 
   //começar a jogar
-  const startGame = () => {
+  const startGame = useCallback(() => {
+    //limpar as letras
+
+    clearLettersStates();
+
     const { word, category } = pickWordAndCategory();
-    setGameStage(stages[1].name);
 
     //criar um array das letras
     let wordLetters = word.split("");
@@ -46,23 +56,87 @@ function App() {
 
     setPickedCategory(category);
     setPickedWord(word);
-    setLetters(letters);
-  };
+    setLetters(wordLetters);
+
+    console.log(word);
+    setGameStage(stages[1].name);
+  }, [pickWordAndCategory]);
 
   //verificar a letra no input
-  const verifyLetter = () => {
-    setGameStage(stages[2].name);
+  const verifyLetter = (letter) => {
+    const normalizedLetter = letter.toLowerCase();
+
+    //checar se a letra já foi utilizada
+    if (
+      guessedLetters.includes(normalizedLetter) ||
+      wrongLetters.includes(normalizedLetter)
+    ) {
+      return;
+    }
+
+    // adicionar uma letra ou remover uma chance
+
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+    } else {
+      setWrongLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+      setGuesses((actualGuesses) => actualGuesses - 1);
+    }
   };
+
+  const clearLettersStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+
+  useEffect(() => {
+    if (guesses <= 0) {
+      clearLettersStates();
+      setGameStage(stages[2].name);
+    }
+  }, [guesses]);
+
+  //checar condição de vitória
+  useEffect(() => {
+    const uniqueLetters = [...new Set(letters)];
+
+    if (
+      guessedLetters.length === uniqueLetters.length &&
+      gameStage === stages[1].name
+    ) {
+      setScore((actualScore) => (actualScore += 50));
+      startGame();
+    }
+  }, [guessedLetters, letters, gameStage, startGame]);
 
   //recomeçar o jogo
   const restart = () => {
+    setScore(0);
+    setGuesses(guessesNum);
     setGameStage(stages[0].name);
   };
   return (
     <div className="App">
       {gameStage === "start" && <StartScreen startGame={startGame} />}
-      {gameStage === "game" && <Game verifyLetter={verifyLetter} />}
-      {gameStage === "end" && <EndGame restart={restart} />}
+      {gameStage === "game" && (
+        <Game
+          verifyLetter={verifyLetter}
+          pickedWord={pickedWord}
+          pickedCategory={pickedCategory}
+          letters={letters}
+          guessedLetters={guessedLetters}
+          wrongLetters={wrongLetters}
+          guesses={guesses}
+          score={score}
+        />
+      )}
+      {gameStage === "end" && <EndGame restart={restart} score={score} />}
     </div>
   );
 }
