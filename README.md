@@ -1,7 +1,8 @@
 ## Este projeto foi um desafio disponibilizado pela plataforma Frontend Mentor
 <div align="center">
   
-![Final Project Design](https://user-images.githubusercontent.com/43121767/161164644-11320172-d5da-4512-9530-cf356d3087b8.gif)
+![Final Project Design]![ezgif com-gif-maker](https://user-images.githubusercontent.com/43121767/173640349-0ea31259-2606-4441-aaf9-7df86b37dec9.gif)
+
 </div>
 
 ## Sobre o projeto
