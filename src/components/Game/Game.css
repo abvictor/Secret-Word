@@ -15,13 +15,13 @@
 .wordContainer{
   margin: 1.5em;
   padding: 1.5em;
-  border: 10px solid #114B5F;
+  border: 10px solid #F5EFED;
   display: flex;
 }
 .letter, .blankSquare {
   font-size: 70px;
   line-height: 1.5em;
-  border: 2px solid #028090;
+  border: 2px solid #F5EFED;
   height: 100px;
   width: 100px;
   text-transform: uppercase;
@@ -43,4 +43,10 @@
   font-size: 2em;
   text-align: center;
   margin-right: 1em;;
+}
+.wrong_letters{
+    color: "#fff";
+    font-size: 18;
+    font-weight: bold;
+    text-transform: uppercase,
 }
