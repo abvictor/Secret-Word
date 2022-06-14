@@ -10,6 +10,7 @@ O projeto é baseado em um jogo de adivinhação de palavras, onde a cada letra 
 
 Obs: O jogo não tem final
 
+Este projeto foi desenvolvido juntamente com professor Matheus Battisti, que é responsável por ministrar o curso na Udemy.
 
 ### As tecnologias usadas foram:
 - React e CSS
