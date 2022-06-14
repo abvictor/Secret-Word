@@ -1,4 +1,4 @@
-## Este projeto foi um desafio disponibilizado pela plataforma Frontend Mentor
+## Este projeto foi desenvolvido durante um curso de React
 <div align="center">
   
 ![Final Project Design](https://user-images.githubusercontent.com/43121767/173640349-0ea31259-2606-4441-aaf9-7df86b37dec9.gif)
